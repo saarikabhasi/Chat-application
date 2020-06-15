@@ -11,8 +11,13 @@ socketio = SocketIO(app)
 def index():
   return render_template ("index.html")
 
-@app.route("/register",methods=["get","post"])
-def register():
-    name=request.form.get("name")
-    return render_template("index.html")
+#@app.route("/createchannel/<string:name>",methods=["GET","POST"])
+@app.route("/createchannel",methods=["GET","POST"])
+def createchannel():
+  print("came here")
+  name = request.form["name"]
+  
+  print("name is :" ,f"{name}")
+  print(request.method)
+  return render_template("channel.html",name=name)
 

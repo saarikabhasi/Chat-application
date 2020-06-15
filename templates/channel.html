@@ -1,0 +1,71 @@
+<!-- 1. create 2.show channel list -->
+
+{% extends "layout.html" %}
+{% block heading %}
+
+
+Flack
+
+{% endblock %}
+
+
+{% block body %}
+
+
+<script>
+    document.addEventListener('DOMContentLoaded',()=>{
+        document.querySelector('#submit').disabled = true;
+
+      document.querySelector('#channel').onkeyup = () => {
+        if (document.querySelector('#channel').value.length > 0)
+            document.querySelector('#submit').disabled = false;
+        
+        else
+          document.querySelector('#submit').disabled = true;
+        };
+      
+      
+      document.querySelector('#new-channel').onsubmit =()=>{
+        //create new li for channel
+        const li =document.createElement('li');
+        li.innerHTML=document.querySelector('#channel').value;
+        //add new item to channel list
+        document.querySelector('#channels').append(li);
+        //clear input field
+        document.querySelector('#channel').value='';
+        document.querySelector('#submit').disabled = true;
+      
+        // Stop form from submitting
+        return false;
+      };
+  
+      }); 
+   
+
+  </script>
+  <div class ="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="workspace">
+          <div class="sidebar" role="tabpanel">
+            <h1 id="printname">{{name}}</h1>
+            <h2>Channels</h2>
+            <ul id="channels">
+
+            </ul>
+            <form id ="new-channel">
+              <input id ="channel" autocomplete="off" autofocus placeholder="Enter channel name" type="text">
+              <input id ="submit" type="submit">
+            </form>
+          </div>
+        </div>
+     </div>
+      <div class="col-lg-8">
+        <div class="messages">
+          <p>here</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  {% endblock %}
