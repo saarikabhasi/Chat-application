@@ -1,0 +1,30 @@
+#footer{
+    text-align:center;
+}
+#createchannel {
+    
+    background-color: rgb(247, 214, 190);
+}
+#givedisplayname{
+    width:500px;
+    height:350px;
+    margin-left: 30%;
+    top:20%;
+    background-color: rgb(211, 211, 211);
+
+}
+ input{
+    width: 200px;
+    position: relative;
+    text-align: center;
+    margin-top: 20px;
+}
+#givedisplayname button{
+ 
+ 
+    position: relative;
+    float: center;
+    
+    background-color: rgb(38, 149, 196);
+
+}

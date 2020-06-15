@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+{% block heading %}
+
+
+SLack
+
+{% endblock %}
+
+
+{% block body %}
+
+<!-- <script>
+
+    if (!localStorage.getItem('name'))
+        
+        document.querySelector('button').onclick = () =>{
+            const name = document.querySelector('#name').value;
+            console.log(name)
+            localStorage.setItem('name', name);
+        };
+
+              // Load current value of  counter
+              document.addEventListener('DOMContentLoaded', () => {
+                  document.querySelector('#name').innerHTML = localStorage.getItem('name');
+
+                  // Count every time button is clicked
+                  document.querySelector('button').onclick  = () => {
+                      // Increment current counter
+                      let name = localStorage.getItem('name');
+                    
+
+                      // Update counter
+                      document.querySelector('#name').innerHTML = name;
+                      console.log(name)
+                      localStorage.setItem('name', name);
+                  }
+              });
+
+</script> -->
+<h1 id="printname"></h1>
+<script  type="text/javascript">
+// Set starting value of name
+if (!localStorage.getItem('name')){
+
+    $(window).on('load',function() {
+        $('#givedisplayname').modal('show');}
+        );
+    
+    document.addEventListener('DOMContentLoaded', getname=() => {   
+    //document.querySelector('button').onclick = () =>{   
+    
+        const name = document.querySelector('#name').value;
+        console.log(name)
+      
+        document.querySelector('#printname').innerHTML = name;
+        localStorage.setItem('name', name);
+     
+    });
+    } 
+    else{
+        console.log("else")
+        const name = localStorage.getItem('name')
+        console.log(name)
+        document.querySelector('#printname').innerHTML = name;
+        
+    }
+   
+
+
+</script>
+    
+
+    
+    <div class="modal" tabindex="-1" role="dialog" id= "givedisplayname">
+        <div class="modal-dialog">
+          <div class="modal-content" id ="#form">
+            <div class="modal-header">
+              <h5 class="modal-title">Enter Display name</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <input type="text" class="form-control  form-control-lg" autocomplete="off" autofocus placeholder="Display name" name = "name" id="name" type="text">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal"onclick="getname()" >Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  
+{% endblock %}
+
