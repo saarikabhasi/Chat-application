@@ -1,0 +1,13 @@
+1. enter name
+2. sidebar:
+    * create channel
+        i. button/link to create channel
+        ii. collapse and show text area and button
+    * show all existing channels
+3. on channel click
+    * display box on right to start chatting
+    * implemented with socket io
+    * store maximum of 100 messages
+4. remember previous channel
+5. decide on personal touch
+
