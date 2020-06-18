@@ -23,6 +23,14 @@ Flack
           else
             document.querySelector('#submit').disabled = true;
           };
+          document.querySelector('#messagebox').onkeyup = () => {
+          if (document.querySelector('#messagebox').value.length > 0)
+              document.querySelector('#sendmsg').disabled = false;
+          
+          else
+            document.querySelector('#sendmsg').disabled = true;
+          };
+
           document.querySelector('#cname').onsubmit =()=>{
        
 
@@ -34,35 +42,42 @@ Flack
           // Stop form from submitting
           return false;
       };
+      document.querySelector('#sendmsg').onsubmit =()=>{
+       
+
+       
+       //clear input field
+       document.querySelector('#messagebox').value='';
+       document.querySelector('#sendmsg').disabled = true;
+     
+       // Stop form from submitting
+       return false;
+   };
   
       }); 
 
 
 </script>
-  <div class ="container">
+
+
+  <div class ="container" style="background-color: rgb(154, 154, 154);">
     <div class="row">
-      <div class="col-lg-4">
+      <div class="col-lg-4" >
         <div class="workspace">
-          <div class="sidebar" role="tabpanel">
+          <div class="sidebar" role="tabpanel" >
             <h1 id="printname">Welcome {{name}}</h1>
             <h2>Channels</h2>
           
            
-                <ul id="channels">
-                  <!-- {% if allchannels is defined %}
+                <!-- <ul id="channels">
+                  {% if allchannels is defined %}
                     {% for channel in allchannels %}
                       <li> {{channel}}</li>
                     {%endfor%}
-                  {%endif %} -->
+                  {%endif %}
 
-                </ul>
-                <div class="tab">
-                  {% if allchannels is defined %}
-                    {% for channel in allchannels %}
-                      <button class="tablinks" onclick="openChat(chatonchannel, channel)" id="defaultOpen">{{channel}}</button>
-                      {%endfor%}
-                      {%endif %}
-                </div>
+                </ul> -->
+
                 
 
                 
@@ -76,13 +91,13 @@ Flack
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title">Enter Display name</h5>
+                            <h5 class="modal-title">Enter channel name</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
                           <div class="modal-body">
-                              <input type="text" class="form-control  form-control-lg" autocomplete="off" autofocus placeholder="Display name" name = "cname" id="cname" type="text" >
+                              <input type="text" class="form-control  form-control-lg" autocomplete="off" autofocus placeholder="channel name" name = "cname" id="cname" type="text" >
                               {% if error_msg is defined and error_msg|length > 0 %}
                                 <p class="text-danger">{{error_msg}}
                                {%endif%} 
@@ -92,7 +107,7 @@ Flack
 
              
                           <div class="modal-footer">
-                            <button class="btn btn-primary" id ="submit" onclick ="validateform()">Submit</button>
+                            <button class="btn btn-primary" id ="submit" >Submit</button>
                             
                           </div>
                         </div>
@@ -101,21 +116,108 @@ Flack
                   </div>
               
                 </form>
+                <div id ="channeltabs">
+                  <div class="tab" >
+                    {% if allchannels is defined %}
+                      {% for c in allchannels %}
+                        {% set chan = c %}
+                        <button class="tablinks" onclick="openChat(event, '{{chan}}')" id="defaultOpen">{{c}}</button>
+                        {%endfor%}
+                        {%endif %}
+                  </div>
+              </div>
             </div>
         </div>
      </div>
-      <div class="col-lg-8">
+      <div class="col-lg-8" style="background-color: rgb(242, 239, 239);">
         <div class="messages">
-          <p>here</p>
+          {% if allchannels is defined %}
+            {% for c in allchannels %}
+              <div id={{c}} class="tabcontent">
+                  <h3>{{c}}</h3>
+                  <div>
+                    <ul id="mesg">
+                      <hr>
+                    </ul>
+                    <hr>
+                    <span>
+                      <!-- <form id ="new-msg"  method="POST"> -->
+                        <!-- <textarea name="messagebox" id ="messagebox"  placeholder="Write your message" ></textarea> -->
+                        <input id="messagebox" name="messagebox" class="form-control" size="50" autocomplete="off" autofocus>
+                        <button class="btn btn-primary"   id ="sendmsg" >Send</button>
+                    <!-- </form> -->
+                    </span>
+                    
+                  </div>
+                 
+              </div>
+              {%endfor%}
+              {%endif %}
         </div>
       </div>
 
     </div>
   </div>
   <script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Connect to websocket
+    var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
+    console.log(socket);
+    // When connected, configure buttons
+      socket.on('connect', () => {
+
+          // Each button should emit a "submit msg" event
+          //document.querySelector('#sendmsg').button.onclick = () => {
+            document.querySelector('#sendmsg').addEventListener('click', () => {
+                  console.log(document.getElementById("messagebox").value);
+                  let message = document.getElementById("messagebox").value;
+                  console.log(message);
+                  console.log(socket);
+                  socket.emit('send message' , {'message': message});
+                  // socket.emit('hello', 'can you hear me?', 1, 2, 'abc');
+              }
+          );
+        });
+
+      // When a new msg is announced
+      socket.on('announce message', data => {
+          var msg = document.getElementById("messagebox").value;
+          console.log(msg);
+          const li = document.createElement('li');
+        
+          //document.getElementById("mesg").innerHTML = `Message: ${data.message}`;
+           li.innerHTML = `Message: ${data.message}`;
+           document.querySelector('#mesg').append(li);
+      });
+      
+
+    
+  });
+
+  function openChat(evt, chan) {
+    var i, tabcontent, tablinks;
+    console.log(chan);
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+       tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+   document.getElementById(chan).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+  
+  // Get the element with id="defaultOpen" and click on it
+  document.getElementById("defaultOpen").click();
+  </script>
+
+  <script>
       var errors='{{error_msg}}';
       if (errors.length > 0){
         $('#channel').modal('show');
       }
   </script>
+
   {% endblock %}

@@ -44,10 +44,13 @@ def createchannel():
   else:
     return render_template("channel.html", allchannels=allchannels)
 
-
-  #@app.route("/chat/<string:channel>",methods=["GET","POST"])
-  @app.route("/chat",methods=["GET","POST"])
-  def chat():
-
-    return render_template("chat.html")
+  allmessages=[]
+  @socketio.on("send message")
+  def chat(data):
+    print("in chat")
+    message = data["message"]
+    print("messages are :",message)
+    allmessages.append(message)
+    emit("announce message", {"message": message}, broadcast=True)
+ 
 
