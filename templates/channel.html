@@ -136,9 +136,9 @@ Flack
               <div id={{c}} class="tabcontent">
                   <h3>{{c}}</h3>
                   <div>
-                    <ul id="mesg">
-                      <hr>
-                    </ul>
+                    <textarea id="mesg">
+                      
+                    </textarea>
                     <hr>
                     <span>
                       <!-- <form id ="new-msg"  method="POST"> -->
@@ -158,41 +158,51 @@ Flack
 
     </div>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.slim.js"></script>
+  <!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script> -->
+  <!-- <script src="{{ url_for('static', filename='channel.js') }}"></script> -->
   <script>
-document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
     // Connect to websocket
-    var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
+  var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
+  //var socket = io.connect(location.origin );
     console.log(socket);
     // When connected, configure buttons
       socket.on('connect', () => {
-
+        socket.emit('joined');
+        
           // Each button should emit a "submit msg" event
           //document.querySelector('#sendmsg').button.onclick = () => {
             document.querySelector('#sendmsg').addEventListener('click', () => {
                   console.log(document.getElementById("messagebox").value);
                   let message = document.getElementById("messagebox").value;
-                  console.log(message);
-                  console.log(socket);
-                  socket.emit('send message' , {'message': message});
+                  console.log("message in #sendmsg",message);
+                  console.log("socket in #sendmsg",socket);
+                  socket.emit('send message' ,message);
+                  document.getElementById("messagebox").value = '';
                   // socket.emit('hello', 'can you hear me?', 1, 2, 'abc');
               }
           );
         });
 
       // When a new msg is announced
-      socket.on('announce message', data => {
-          var msg = document.getElementById("messagebox").value;
-          console.log(msg);
-          const li = document.createElement('li');
+      socket.on('announce chat', data => {
+          // var msg = data.message;
+          console.log("in annoucne",data);
+          let row =  `${data.message}`
+          console.log(row);
+          document.querySelector('#mesg').value += row + '\n'
         
-          //document.getElementById("mesg").innerHTML = `Message: ${data.message}`;
-           li.innerHTML = `Message: ${data.message}`;
-           document.querySelector('#mesg').append(li);
+
       });
       
 
     
   });
+  </script>
+  
+  <script>
+
 
   function openChat(evt, chan) {
     var i, tabcontent, tablinks;

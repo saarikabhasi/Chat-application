@@ -1,10 +1,12 @@
 import os 
 from flask import Flask,render_template,request,redirect,url_for,jsonify,flash
-from flask_socketio import SocketIO, emit
+from flask_socketio import SocketIO, emit,send
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
-socketio = SocketIO(app)
+# app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
+app.config["SECRET_KEY"] = "my secret key"
+#socketio = SocketIO(app)
+socketio = SocketIO(app,engineio_logger=True)
 
 
 @app.route("/")
@@ -20,6 +22,7 @@ def createname():
   print("Method",request.method)
   #return redirect(url_for('createchannel',name=name))  
   return render_template("channel.html",name=name)
+  #return redirect(url_for('index'))
 
 allchannels=[]
 @app.route("/createchannel",methods=["GET","POST"])
@@ -44,13 +47,19 @@ def createchannel():
   else:
     return render_template("channel.html", allchannels=allchannels)
 
-  allmessages=[]
-  @socketio.on("send message")
-  def chat(data):
+  # allmessages=[]
+  # @socketio.on('send message')
+  # def chat(data):
+  #   print("in chat")
+  #   message = data["message"]
+  #   print("messages are :",message)
+  #   allmessages.append(message)
+  #   emit("announce message", {"message": message}, broadcast=True)
+  # allmessages=[]
+  @socketio.on('send message')
+  def chat(message):
     print("in chat")
-    message = data["message"]
     print("messages are :",message)
-    allmessages.append(message)
-    emit("announce message", {"message": message}, broadcast=True)
- 
+    # allmessages.append(message)
+    emit('announce chat', {"message": message}, broadcast=True)
 
