@@ -2,80 +2,110 @@
 {% block heading %}
 
 
-Flack
+Flack chat application
 
 {% endblock %}
 
 
 {% block body %}
 
+<!-- chat application -->
 
-<form action ="{{ url_for('createname') }}" method ="post" id ="form">
-  <div>
-      <input type="text" class="form-control  form-control-lg" autocomplete="off" autofocus placeholder="Display name" name = "name" id="name" type="text">
-  </div>
-  <div >
-  <button type="button" class="btn btn-primary" type="submit" data-dismiss="modal"onclick="getname()" >Submit</button>
-  </div>
-</form>
-<script  type="text/javascript">
-
-
-if (!localStorage.getItem('name')){
-
-//if no name found in local storage
-      
-      getname=()=>{
-        let name = document.querySelector('#name').value;
-      
-        localStorage.setItem('name', name);
-        console.log(name)
-        document.getElementById('form').submit();
-
-     
-    };
-    } 
-    else{
-        
-        let name = localStorage.getItem('name')
-        document.querySelector('#name').value = name
-        document.getElementById('form').submit();
-
-        
-    }
-   
-
-
-</script>
-    
-
-    
-    <!-- <div class="modal" tabindex="-1" role="dialog" id= "givedisplayname">
-        <div class="modal-dialog">
-          <div class="modal-content" >
-            <div class="modal-header">
-              <h5 class="modal-title">Enter Display name</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+<div class="container-channels">
+  
+  <section>
+    <article >
+      <div class="container channels" >
+        <div class= "row ">
+          <div class="col-lg-4 ">
+            <div class="searchmessages">
+              {% if search_error != "" %}
+                {% if allchannels is defined and allchannels|length %}
+                  {% for channel in allchannels %}
+                      <a href="{{url_for('channel',channelname = channel) }}"><p>{{channel}}</p></a>
+                  {% endfor %}   
+                {% else %} 
+                    <p class="notfound"> No channels found. Create one </p>
+                {%endif%}
+              {%endif%}
             </div>
-            <form action ="{{ url_for('createchannel',name=name) }}" method ="post" id ="#form">
-              <div class="modal-body">
-                  <input type="text" class="form-control  form-control-lg" autocomplete="off" autofocus placeholder="Display name" name = "name" id="name" type="text">
-              </div>
-              <div class="modal-footer" >
-              <button type="button" class="btn btn-primary" type="submit" data-dismiss="modal"onclick="getname()" >Submit</button>
-              </div>
+            <div class="createchanel">
+              <form id ="new-channel"   action ="{{ url_for('createchannel') }}" method="POST">
+                <div>
+                  <a class ="btn-link " data-toggle="modal" href="#create" role="button" aria-expanded="false" aria-controls="create">
+                    <p>Create new channel</p>
+                  </a>
+                  <!-- <div id ="create">
+                    <div>
+                      <input class="form-control form-control-lg" type="text" name = "cname" placeholder="Enter channel name" aria-label="Search">
+                      {% if error_msg is defined and error_msg|length > 0 %}
+                        <p class="text-danger">{{error_msg}}
+                      {%endif%} 
+                  </div> -->
+                  <div class="modal " tabindex="-1" role="dialog" id = "create">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Enter channel name</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" class="form-control  form-control-lg" autocomplete="off" autofocus placeholder="channel name" name = "cname" id="cname" type="text" >
+                            {% if error_msg is defined and error_msg|length > 0 %}
+                              <p class="text-danger text-center">{{error_msg}}
+                            {%endif%} 
+
+                        </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-primary" id ="submit" >Submit</button>
+                  
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                  <!-- <div>
+                      <button class="btn btn-primary btn-rounded btn-sm my-0" id ="submit" type="submit">Search</button>
+                  </div> -->
+              </form> 
+            </div>
+              
+          </div> 
+          
+          <div class="col-lg-8">
+            <form action ="{{ url_for('search') }}" method="post">
+              <form class ="form-inline" >
+                  <div class="searchbar">
+                      <div>
+                          <input class="form-control form-control-lg" type="text" name = "search" placeholder="Search by channel name" aria-label="Search">
+                      </div>
+                      <div>
+                          <button class="btn btn-primary btn-rounded btn-sm my-0" type="submit">Search</button>
+                      </div>
+                      {% if search_error is defined and search_error|length %}
+                      <p class="text-center">{{search_error}}</p>
+                      {%endif%}
+                      {%if searchresults is defined and searchresults|length %}
+                      <p>{{searchresults}}</p>
+                      <hr>
+                      {%endif%}
+                    </div>
+                </form>
             </form>
           </div>
-       
         </div>
-      </div> -->
-
-     
-      
-    
-    
-  
+      </div>     
+    </article>
+  </section>  
+</div>
+<script>
+  var errors='{{error_msg}}';
+  if (errors.length > 0){
+    $('#create').modal('show');
+  }
+</script>
 {% endblock %}
+
 

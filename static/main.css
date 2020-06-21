@@ -77,9 +77,99 @@
     border-left: none;
     height: 300px;
   }
-.messages textarea{
-  margin-top:50%;
-  width: 100%;
-  height: 200px;
-  font-size: 1.3rem;
+
+
+.searchbar{
+  display: grid;
+  grid-template-columns: auto auto ;
+  grid-gap: 0px;
+
+}
+.searchbar input{
+  height: 40px;
+  width:  90%;
+  margin-top: 20px;
+  margin-bottom: 0px;
+  margin-right: 20px;
+  font-size: 1.2rem;
+
+}
+.searchbar .btn{
+  top:20px;  
+  margin-left: 5%;
+  float: left;
+  /* width: 25%; */
+  width:auto;
+  height: 40px;
+  position: relative;
+  background-color: #0075b4;
+  
+}
+.channels{
+  display: grid;
+  grid-template-columns: auto auto ;
+  grid-gap: 0px;
+}
+#messagebox{
+width:25rem;
+
+border: 1px solid black;;
+}
+#displayallmessagesID .container-msg{
+  width: 20rem; 
+  margin: 0px 0 0 0;
+  border-radius: 6px;
+  top:4rem;
+  display:inline-block;
+  position: relative;
+  margin-bottom: 200px;
+  height:2rem;
+
+}
+#displayallmessagesID .container-msg p{
+  padding: 15px;
+  border-radius: 6px 6px 0 0;
+  position: relative;
+  letter-spacing: -1px;
+  margin: 0;
+  color: rgb(89, 7, 7);
+  font-size: 20px;
+  text-align: right;
+  
+}
+#displayallmessagesID .containers p:after {
+  content: '';
+  position: absolute;
+  top: 25px;
+  right: -5px;
+      width: 20px;
+      height: 20px;
+  
+  -webkit-transform: rotate(45deg);
+
+ 
+
+}
+#displayallmessagesID .containers-msg:nth-child(odd) {
+  background-color: #ebedf5;
+}
+
+#displayallmessagesID .containers:nth-child(odd)  p{
+  background-color: #ebedf5;
+
+}
+#displayallmessagesID .containers:nth-child(odd)  p:after{
+  background-color: #ebedf5;
+
+}
+#displayallmessagesID .containers:nth-child(even) {
+  background-color: #eec11e;
+
+}
+#displayallmessagesID .containers:nth-child(even) p{
+  background-color: #eec11e;
+
+}
+#displayallmessagesID:nth-child(odd) .container-msg p:after{
+  background-color:  #ebedf5;
 }
