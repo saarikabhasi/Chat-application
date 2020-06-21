@@ -26,12 +26,12 @@ Flack Login
                 <div id="displayallmessagesID">
                     <div id="messagebox">
                         {% if channelmessages is defined and channelmessages|length %}
-
+                        <div class="container-msg">
                         {% for key,value in  channelmessages.items() %}
                             {% if key == channelname %}
                                 {%set msg = value %}
                                 {% for msg in msg %}
-                                <div class="container-msg">
+                                
                                                 
                                     {% if msg[0] == account %}
                                         <div class="containers float-right">
@@ -46,12 +46,12 @@ Flack Login
                                             <p class="lead text-secondary">{{msg[2]}}</p>
                                         </div>
                                     {%endif%}
-                                </div>
+                                
                                 {%endfor%}          
                             {%endif%}    
                         
                         {% endfor %}  
-                    
+                    </div>
                         {% endif %}
                                              
                     </div>
@@ -61,10 +61,10 @@ Flack Login
                 
                 <hr>
                     
-                    <div id="container-msg container-new-msg">
+                    <!-- <div id="container-msg container-new-msg">
                        <p> New messages</p> 
 
-                    </div>
+                    </div> -->
                 </div>
                
             

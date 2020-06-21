@@ -46,15 +46,48 @@
         //newmessageDiv = document.getElementById("container-new-msg");
         
         //var newmessageDiv = getElementsById('container-new-msg');
-        if(document.getElementById('container-msg') != null){
+        // if(document.getElementById('container-msg') != null){
 
-             document.getElementById('container-msg').innerHTML += values+'\n';
-        }  
-        else{
-            document.getElementById('container-msg').innerHTML =  values+'\n';
+        //      document.getElementById('container-msg').innerHTML += values+'\n';
+        // }  
+        // else{
+        //     document.getElementById('container-msg').innerHTML =  values+'\n';
        
-        }
+        // }
 
+        let newDiv = document.createElement('div');
+        newDiv.className = 'containers float-right';
+
+        let newP1 = document.createElement('p');
+        newP1.innerHTML = data.username;
+
+        let newP2 = document.createElement('p');
+        newP2.className = 'lead text-secondary';
+        newP2.innerHTML =  data.message;
+
+        let newP3 = document.createElement('p');
+        newP3.className = 'lead text-secondary';
+        newP3.innerHTML = data.timestamp;
+
+        newDiv.appendChild(newP1);
+        newDiv.appendChild(newP2);
+        newDiv.appendChild(newP3);
+        //document.body.appendChild(newDiv);
+        console.log(newDiv);
+       // var x = document.getElementsByClassName("container-msg");
+        
+        let length = document.getElementsByClassName("container-msg").length;
+        console.log(length);
+        if (length == 0){
+            //document.getElementsByClassName("container-msg")[0].appendChild(newDiv);
+            
+            document.querySelector(".container-msg").innerHTML = newDiv;
+        }
+        else{
+            document.getElementsByClassName("container-msg")[length-1].appendChild(newDiv);
+        }
+        
+        //document.querySelector(".container-msg").appendChild(newDiv);
     });
       
   //oldmessage 
