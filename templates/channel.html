@@ -12,69 +12,6 @@ Flack Login
 <!-- Channel messages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.slim.js"></script>
 <script src="{{ url_for('static', filename='channel.js') }}"></script>
-<!-- <div class="container">
-    <div class="row">
-        <div class="col">
-            <p>{{channelname}}</p>
-            <p>description of channel</p>
-            
-        
-            <div class="channelheader">
-                <p>#{{channelname}}</p>
-            </div>
-
-            <div class="channelmessagesClass">
-                <div id="displayallmessagesID">
-                    <div id="messagebox">
-                        {% if channelmessages is defined and channelmessages|length %}
-                        <div class="container-msg">
-                        {% for key,value in  channelmessages.items() %}
-                            {% if key == channelname %}
-                                {%set msg = value %}
-                                {% for msg in msg %}
-                                
-                                                
-                                    {% if msg[0] == account %}
-                                        <div class="containers float-right">
-                                            <h5 >{{msg[0]}}</h5>
-                                            <p class="lead text-secondary">{{msg[1]}}</p>
-                                            <p class="lead text-secondary">{{msg[2]}}</p>
-                                        </div>
-                                    {%else%}
-                                        <div class="containers float-left">
-                                            <h5 >{{msg[0]}}</h5>
-                                            <p class="lead text-secondary">{{msg[1]}}</p>
-                                            <p class="lead text-secondary">{{msg[2]}}</p>
-                                        </div>
-                                    {%endif%}
-                                
-                                {%endfor%}          
-                            {%endif%}    
-                        
-                        {% endfor %}  
-                    </div>
-                        {% endif %}
-                                             
-                    </div>
-                                  
-                                
-                    
-                
-                <hr>
-                    
-
-                </div>
-               
-            
-            </div>
-            <div class="channelwritemessageClass">
-
-                <input type="text" id="writemessageID" name="writemessage" placeholder="Message {{channelname}}"><br><br>
-                <input type="submit" id ="sendbutton" value="send message">
-            </div>
-        </div>
-    </div>
-</div> -->
 
 <div id= "channel">  
     <div class ="container">
@@ -86,35 +23,71 @@ Flack Login
         </div>
         <section id ="messagebox">
             <article >
+                <div class = "container-msg">
                 {% if channelmessages is defined and channelmessages|length %}
-                    <div class = "container-msg">
+                    
                         {% for key,value in  channelmessages.items() %}
                             {% if key == channelname %}
                                 {%set msg = value %}
                                 {% for msg in msg %}
                                     {% if msg[0] == account %}
-                                        <div class="containers container-right float-right">
-                                            <h5 >{{msg[0]}}</h5>
-                                            <p class="lead text-secondary">{{msg[1]}}</p>
-                                            <p class="lead text-secondary">{{msg[2]}}</p>
+                                        <div class="containers container-right ">
+                                            <h2 >{{msg[0]}}</h2>
+                                            <h3 class="lead text-secondary">{{msg[1]}}</h3>
+                                           <div > <p class="lead">{{msg[2]}}</p></div>
+                                           <div > <p class="lead">{{msg[3]}}</p></div>
+                                           {% if msg[4] is defined %}
+                                                <div> <img alt="{{msg[4][0]}}" ></div>
+                                                <div> <p class="lead">{{msg[4][1]}}</p></div>
+                                            {%endif%}
+                                                
                                         </div>
+                                  
                                         {%else%}
-                                        <div class="containers container-left float-left">
-                                            <h5 >{{msg[0]}}</h5>
-                                            <p class="lead text-secondary">{{msg[1]}}</p>
-                                            <p class="lead text-secondary">{{msg[2]}}</p>
+                                        <div class="containers container-left ">
+                                            <h2 >{{msg[0]}}</h2>
+                                            <h3 class="lead text-secondary">{{msg[1]}}</h3>
+                                            <div > <p class="lead">{{msg[2]}}</p></div>
+                                            <div > <p class="lead">{{msg[3]}}</p></div>
+                                            
                                         </div>
                                     {%endif%}
                                 {% endfor %}
                             {% endif %}
+                           
                         {% endfor %}
-                    </div>
-                {%endif%}    
-    
+                    
+                    {%endif%}  
+                    {%if message is defined and message|length%}
+                        
+                        <p class ="lead">{{message}}</p>
+
+                    {%endif%}
+            </div>
                 <div class="channelwritemessageClass">
                
-                        <h6 class="write"><input type="text" id="writemessageID" name="writemessage" placeholder="Message {{channelname}}">
-                        <span><button type="submit" id ="sendbutton" value="send message">send</button></span></h6>
+                        <h6 class="write">
+                            <input type="text" id="writemessageID" name="writemessage" placeholder="Message {{channelname}}"> 
+                            <span>
+                                <button type="submit" id ="sendbutton" value="send message">send</button>
+                            </span>
+                            <div>
+                                
+                                <a class ="btn-link " href ="#attachments" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="attachments"><i class="fas fa-plus"> </i></a>
+                                <div class="attach">
+                                <span id="attachments"  class=" collapse" >
+                                    <ul> image <input type="file" id="img" name="img" accept="image/*" ></ul>
+                                   
+                                    <ul> documents<input type="file" id ="doc" name ="doc" accept=".doc,.docx,.pdf"></ul>
+                                
+                                </span>
+                            </div>
+                            
+                        
+                           </div> </h6>
+                            
+                        
+                   
                  
 
                 </div>

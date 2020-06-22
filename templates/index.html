@@ -9,7 +9,7 @@ Flack chat application
 
 {% block body %}
 
-<!-- chat application -->
+<!-- In this page, user can see all channels -->
 
 <div class="container-channels">
   
@@ -22,7 +22,7 @@ Flack chat application
               {% if search_error != "" %}
                 {% if allchannels is defined and allchannels|length %}
                   {% for channel in allchannels %}
-                      <a href="{{url_for('channel',channelname = channel) }}"><p>{{channel}}</p></a>
+                      <a id ="currentchannel" href="{{url_for('channel',channelname = channel) }}" ><p>{{channel}}</p></a>
                   {% endfor %}   
                 {% else %} 
                     <p class="notfound"> No channels found. Create one </p>
@@ -35,13 +35,7 @@ Flack chat application
                   <a class ="btn-link " data-toggle="modal" href="#create" role="button" aria-expanded="false" aria-controls="create">
                     <p>Create new channel</p>
                   </a>
-                  <!-- <div id ="create">
-                    <div>
-                      <input class="form-control form-control-lg" type="text" name = "cname" placeholder="Enter channel name" aria-label="Search">
-                      {% if error_msg is defined and error_msg|length > 0 %}
-                        <p class="text-danger">{{error_msg}}
-                      {%endif%} 
-                  </div> -->
+   
                   <div class="modal " tabindex="-1" role="dialog" id = "create">
                     <div class="modal-dialog">
                       <div class="modal-content">
@@ -66,9 +60,7 @@ Flack chat application
                     </div>
                   </div>
                 </div>
-                  <!-- <div>
-                      <button class="btn btn-primary btn-rounded btn-sm my-0" id ="submit" type="submit">Search</button>
-                  </div> -->
+
               </form> 
             </div>
               
@@ -101,10 +93,27 @@ Flack chat application
   </section>  
 </div>
 <script>
+
+  // if error while creating new channel, display create channel modal again.
   var errors='{{error_msg}}';
   if (errors.length > 0){
     $('#create').modal('show');
   }
+
+   
+    window.onload =()=>{
+     
+    // on window load, show previous channel
+    if (localStorage.getItem('currentchannel')){
+      
+      let channel = localStorage.getItem('currentchannel')
+      document.getElementById('currentchannel').href = "/channel/"+channel;
+      document.getElementById('currentchannel').click();
+    }
+  }
+
+
+   
 </script>
 {% endblock %}
 
