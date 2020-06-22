@@ -5,13 +5,48 @@
     
     background-color: rgb(247, 214, 190);
 }
-#givedisplayname{
-    width:500px;
-    height:350px;
-    margin-left: 30%;
-    top:20%;
-    background-color: rgb(211, 211, 211);
+/* .hero-image{
+  background-image: linear-gradient(#eeeceb, #eeeceb);
+  line-height: 15%;
+  padding: 0%;
+  height: 1000px;
+  margin-top: 0px;
+  margin-right: 10px;
+  margin-bottom: 50%;
+  margin-left: 10px;
+  display: block;
+  position: relative;
+  width: 100%;
 
+} */
+ .hero-image#givedisplayname{
+    height:350px;
+    background-color: rgb(0, 156, 184);
+
+    padding: 100px;
+    margin-top: 0px;
+    margin-right: 10px;
+
+    margin-left: 10px;
+    display: block;
+    position: relative;
+    width: 100%;
+
+}
+.hero-image#givedisplayname input{
+  margin-top: 10px;  
+  width:300px;
+  float: center;
+  margin-left:30%;
+  padding: 10px;
+}
+.hero-image#givedisplayname button{
+  margin-top: 50px;
+  float: center;
+  margin-left:40%;
+  position: relative;
+  padding: 10px;
+  background-color: rgb(228, 111, 111);
 }
  .channelwritemessageClass #writemessageID{
     width: 70%;
@@ -42,10 +77,7 @@
 #givedisplayname button{
  
  
-    position: relative;
-    float: center;
     
-    background-color: rgb(38, 149, 196);
 
 }
 .sidebar{
