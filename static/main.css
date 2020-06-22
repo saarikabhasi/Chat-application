@@ -13,11 +13,31 @@
     background-color: rgb(211, 211, 211);
 
 }
- input{
-    width: 200px;
+ .channelwritemessageClass #writemessageID{
+    width: 70%;
     position: relative;
     text-align: center;
     margin-top: 20px;
+    font-size: 1.1rem;
+    margin-top: 20px;
+    height: 40px;
+}
+ button#sendbutton{
+/* .channelwritemessageClass button{ */
+  /* width:300px;
+  float:center;
+  margin-left:35%;
+  height: 300px; */
+  position: relative;
+  float: center;
+  color: white;
+
+  margin-left:5%;
+  margin-top: 120px;
+  width:100px;
+  height: 40px;
+  font-size: 1.1rem;
+  background-color: rgb(38, 149, 196);
 }
 #givedisplayname button{
  
@@ -110,35 +130,122 @@
   grid-template-columns: auto auto ;
   grid-gap: 0px;
 }
-#messagebox{
-width:25rem;
-
-border: 1px solid black;;
-}
-#displayallmessagesID .container-msg{
-  width: 20rem; 
-  margin: 0px 0 0 0;
-  border-radius: 6px;
-  top:4rem;
-  display:inline-block;
+section#messagebox{  
+  width: 100%; 
+  margin: 20px auto;
   position: relative;
-  margin-bottom: 200px;
-  height:2rem;
+
+ 
+}
+
+section#messagebox:before{ 
+  content: '';
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 0px;
+  margin: 0 0 0 -1px;
+  width: 2px;
+  height: 100%;
+  border:4px;
+  /* background: rgba(37,48,59,0.6);    */
+}
+
+
+
+section#messagebox article{
+  /* width: 40%; */
+  margin: 0 0 5px 0;
+  position:relative;
+  
+  
+} 
+section#messagebox article:after{
+  content:'';
+  display:block;
+  clear:both;
+}
+section#messagebox .container-msg{
+  width:100%;
+  /* margin-top: 2px;
+  margin-bottom:2px;
+  margin-left: 2px;
+  margin-right:2px; */
+  border: 1px solid rgb(3, 182, 12);
+  clear:both;
+  display:block;
+  margin-left: 20px;
 
 }
-#displayallmessagesID .container-msg p{
-  padding: 15px;
+section#messagebox .containers{
+  padding:2px;
+  border:1px solid black;
+  border-radius: 6px;
+  top:1rem;
+  display:block;
+  position: relative;
+  /* margin-bottom: 15rem; */
+  /* height:2rem; */
+  margin-top: 10px;
+  margin-bottom: 10px;
+  /* margin-left: 15rem;
+  margin-right: 15rem; */
+  
+
+}
+.container-right{
+  margin-left: 15rem;
+  margin-right: 15rem;
+  background-color: #ebedf5;
+}
+.container-left{
+  margin-left: 5rem;
+  margin-right: 13rem;
+  background-color: #ebedf5;
+
+}
+
+section#messagebox .containers p{
+  padding: 5px;
   border-radius: 6px 6px 0 0;
   position: relative;
   letter-spacing: -1px;
   margin: 0;
-  color: rgb(89, 7, 7);
+ 
   font-size: 20px;
   text-align: right;
+  background-color: #ebedf5;
   
 }
-#displayallmessagesID .containers p:after {
+section#messagebox .container-right h5{
+  color: rgb(191, 10, 10);
+  text-align: right;
+}
+
+section#messagebox .container-right h5:after {
   content: '';
+  background-color: #ebedf5;
+  left:-5px;
+  position: absolute;
+  top: 25px;
+  right: -5px;
+      width: 20px;
+      height: 20px;
+      border:1px dashed black;
+  
+  -webkit-transform: rotate(45deg);
+
+ 
+
+}
+section#messagebox .container-left h5{
+  color: rgb(30, 45, 247);
+  text-align: right;
+}
+section#messagebox .container-left h5:after{
+  content: '';
+  background-color: #ebedf5;
+  /* left:-15px; */
   position: absolute;
   top: 25px;
   right: -5px;
@@ -146,30 +253,45 @@ border: 1px solid black;;
       height: 20px;
   
   -webkit-transform: rotate(45deg);
-
- 
-
 }
-#displayallmessagesID .containers-msg:nth-child(odd) {
+ /* section#messagebox .containers:nth-child(odd) {
   background-color: #ebedf5;
-}
+  width: 20rem;
+  margin-top: 50px;
 
-#displayallmessagesID .containers:nth-child(odd)  p{
+
+}  */
+
+/* section#messagebox .containers:nth-child(odd) h5{
+  color: #132d98;
+  background-color: #ebedf5;
+} */
+ /* section#messagebox .containers:nth-child(odd) h5:after{
+  background-color: #ebedf5;
+  right:305px;
+  /* right:90%; 
+
+}  */
+/* section#messagebox .containers:nth-child(odd)  p{
   background-color: #ebedf5;
 
-}
-#displayallmessagesID .containers:nth-child(odd)  p:after{
-  background-color: #ebedf5;
+} */
 
+/* section#messagebox .containers:nth-child(even) {
+  background-color: #eec11e;
+  /* margin-left:25px; 
+  width: 20rem; 
+  margin-bottom: 510px;
+
+
+}  */
+/* #messagebox .containers:nth-child(even) h5{
+  color: #98135c;
 }
-#displayallmessagesID .containers:nth-child(even) {
+#messagebox .containers:nth-child(even) p{
   background-color: #eec11e;
 
 }
-#displayallmessagesID .containers:nth-child(even) p{
-  background-color: #eec11e;
-
-}
-#displayallmessagesID:nth-child(odd) .container-msg p:after{
-  background-color:  #ebedf5;
-}
+#messagebox .containers:nth-child(even) h5:after{
+  background-color:  #eec11e;
+} */

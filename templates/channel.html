@@ -12,7 +12,7 @@ Flack Login
 <!-- Channel messages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.slim.js"></script>
 <script src="{{ url_for('static', filename='channel.js') }}"></script>
-<div class="container">
+<!-- <div class="container">
     <div class="row">
         <div class="col">
             <p>{{channelname}}</p>
@@ -22,6 +22,7 @@ Flack Login
             <div class="channelheader">
                 <p>#{{channelname}}</p>
             </div>
+
             <div class="channelmessagesClass">
                 <div id="displayallmessagesID">
                     <div id="messagebox">
@@ -35,13 +36,13 @@ Flack Login
                                                 
                                     {% if msg[0] == account %}
                                         <div class="containers float-right">
-                                            <p >{{msg[0]}}</p>
+                                            <h5 >{{msg[0]}}</h5>
                                             <p class="lead text-secondary">{{msg[1]}}</p>
                                             <p class="lead text-secondary">{{msg[2]}}</p>
                                         </div>
                                     {%else%}
                                         <div class="containers float-left">
-                                            <p >{{msg[0]}}</p>
+                                            <h5 >{{msg[0]}}</h5>
                                             <p class="lead text-secondary">{{msg[1]}}</p>
                                             <p class="lead text-secondary">{{msg[2]}}</p>
                                         </div>
@@ -61,10 +62,7 @@ Flack Login
                 
                 <hr>
                     
-                    <!-- <div id="container-msg container-new-msg">
-                       <p> New messages</p> 
 
-                    </div> -->
                 </div>
                
             
@@ -76,6 +74,54 @@ Flack Login
             </div>
         </div>
     </div>
-</div>
+</div> -->
+
+<div id= "channel">  
+    <div class ="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8-offset-2 animation_fading_Down1 center pt-3">
+                <h1>#{{channelname}}</h1>
+                <p>description of channel</p>    
+            </div>
+        </div>
+        <section id ="messagebox">
+            <article >
+                {% if channelmessages is defined and channelmessages|length %}
+                    <div class = "container-msg">
+                        {% for key,value in  channelmessages.items() %}
+                            {% if key == channelname %}
+                                {%set msg = value %}
+                                {% for msg in msg %}
+                                    {% if msg[0] == account %}
+                                        <div class="containers container-right float-right">
+                                            <h5 >{{msg[0]}}</h5>
+                                            <p class="lead text-secondary">{{msg[1]}}</p>
+                                            <p class="lead text-secondary">{{msg[2]}}</p>
+                                        </div>
+                                        {%else%}
+                                        <div class="containers container-left float-left">
+                                            <h5 >{{msg[0]}}</h5>
+                                            <p class="lead text-secondary">{{msg[1]}}</p>
+                                            <p class="lead text-secondary">{{msg[2]}}</p>
+                                        </div>
+                                    {%endif%}
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {%endif%}    
+    
+                <div class="channelwritemessageClass">
+               
+                        <h6 class="write"><input type="text" id="writemessageID" name="writemessage" placeholder="Message {{channelname}}">
+                        <span><button type="submit" id ="sendbutton" value="send message">send</button></span></h6>
+                 
+
+                </div>
+            </article>
+        </section>
+    </div>
+</div>   
+
 
 {% endblock %}

@@ -56,9 +56,16 @@
         // }
 
         let newDiv = document.createElement('div');
-        newDiv.className = 'containers float-right';
+        console.log(localStorage.getItem('name'));
+        if (data.username == localStorage.getItem('name')){
+            newDiv.className = 'containers container-right float-right';
+        }
+        else{
+            newDiv.className = 'containers container-left float-left';
+        }
+       
 
-        let newP1 = document.createElement('p');
+        let newP1 = document.createElement('h5');
         newP1.innerHTML = data.username;
 
         let newP2 = document.createElement('p');
@@ -80,7 +87,7 @@
         console.log(length);
         if (length == 0){
             //document.getElementsByClassName("container-msg")[0].appendChild(newDiv);
-            
+
             document.querySelector(".container-msg").innerHTML = newDiv;
         }
         else{
