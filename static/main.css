@@ -33,19 +33,26 @@
     width: 100%;
 
 }
-.hero-image#givedisplayname input{
-  margin-top: 10px;  
+.displayform{
+  text-align: center;
+  margin-left:30%;
+
+  padding: 50px;
+  display: inline-block;
+}
+.displayform input{
+  /* margin-top: 10px;   */
   width:300px;
   float: center;
-  margin-left:30%;
-  padding: 10px;
+
+ 
 }
-.hero-image#givedisplayname button{
-  margin-top: 50px;
+.displayform button{
+  margin-top: 10px;
   float: center;
-  margin-left:40%;
+  
   position: relative;
-  padding: 10px;
+
   background-color: rgb(228, 111, 111);
 }
  .channelwritemessageClass #writemessageID{
