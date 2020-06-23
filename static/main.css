@@ -1,61 +1,78 @@
 #footer{
-    text-align:center;
+
+  text-align:center;
+
 }
-#createchannel {
-    
-    background-color: rgb(247, 214, 190);
-}
-/* .hero-image{
-  background-image: linear-gradient(#eeeceb, #eeeceb);
-  line-height: 15%;
-  padding: 0%;
+
+.container-channels {
+
   height: 1000px;
-  margin-top: 0px;
-  margin-right: 10px;
-  margin-bottom: 50%;
-  margin-left: 10px;
-  display: block;
-  position: relative;
-  width: 100%;
 
-} */
+}
+
+.container-channels h2{
+
+  font-size: 1.5rem;
+  color:rgb(228, 111, 111);
+  text-decoration: underline;
+  padding:10px;
+
+}
+
+.container-channels p{
+
+  font-size: 1rem;
+  color:rgb(228, 111, 111);
+
+}
+
+.container-channels h3{
+
+  font-size: 1.2rem;
+  color:rgb(228, 111, 111);
+  text-decoration: underline;
+
+}
+
  .hero-image#givedisplayname{
-    height:500px;
-    background-color: rgb(0, 156, 184);
 
+    height:500px;
     padding: 100px;
     margin-top: 0px;
     margin-right: 10px;
-
     margin-left: 10px;
     display: block;
     position: relative;
     width: 100%;
 
 }
+
 .displayform{
+
   text-align: center;
   margin-left:30%;
-
   padding: 50px;
   display: inline-block;
+
 }
+
 .displayform input{
-  /* margin-top: 10px;   */
+
   width:300px;
   float: center;
 
- 
 }
+
 .displayform button{
+
   margin-top: 10px;
   float: center;
-  
   position: relative;
-
   background-color: rgb(228, 111, 111);
+
 }
  .channelwritemessageClass #writemessageID{
+
     width: 70%;
     position: relative;
     text-align: center;
@@ -64,16 +81,12 @@
     margin-top: 20px;
     height: 40px;
 }
+
  button#sendbutton{
-/* .channelwritemessageClass button{ */
-  /* width:300px;
-  float:center;
-  margin-left:35%;
-  height: 300px; */
+
   position: relative;
   float: center;
   color: white;
-
   margin-left:5%;
   margin-top: 120px;
   width:100px;
@@ -81,70 +94,17 @@
   font-size: 1.1rem;
   background-color: rgb(38, 149, 196);
 }
-#givedisplayname button{
- 
- 
-    
-
-}
-.sidebar{
-  /* background-color: #1b89e9; */
-  width: 20rem;
-}
-/* Style the tab */
-#channeltabs .tab {
-    float: left;
-    border: 1px solid #ccc;
- 
-   
-    /* height: 300px; */
-  }
-  
-  /* Style the buttons inside the tab */
-#channeltabs button {
-    display: block;
-    background-color: inherit;
-    color: rgb(0, 0, 0);
-    padding: 1rem ;
-    width: 100%;
-    border: none;
-    outline: none;
-    text-align: left;
-    cursor: pointer;
-    transition: 0.3s;
-    font-size: 17px;
-    
-    border: 1px solid #ccc;
-  }
-  
-  /* Change background color of buttons on hover */
-  #channeltabs .tab button:hover {
-    background-color: rgb(55, 117, 249);
-  }
-  
-  /* Create an active/current "tab button" class */
-  #channeltabs .tab button.active {
-    background-color: #ccc;
-  }
-  
-  /* Style the tab content */
-#channeltabs .tabcontent {
-    float: left;
-    padding: 0px 12px;
-    border: 1px solid #ccc;
-    width: 70%;
-    border-left: none;
-    height: 300px;
-  }
-
 
 .searchbar{
+
   display: grid;
   grid-template-columns: auto auto ;
   grid-gap: 0px;
 
 }
+
 .searchbar input{
+
   height: 40px;
   width:  90%;
   margin-top: 20px;
@@ -153,31 +113,43 @@
   font-size: 1.2rem;
 
 }
+
 .searchbar .btn{
+
   top:20px;  
   margin-left: 5%;
   float: left;
-  /* width: 25%; */
   width:auto;
   height: 40px;
   position: relative;
   background-color: #0075b4;
   
 }
+
 .channels{
   display: grid;
   grid-template-columns: auto auto ;
   grid-gap: 0px;
 }
+
+#channel h1{
+
+  color:   #7c93de;
+
+}
+
 section#messagebox{  
+
   width: 100%; 
   margin: 20px auto;
   position: relative;
-
+  background-color: rgb(255, 255, 255);
+ 
  
 }
 
 section#messagebox:before{ 
+
   content: '';
   display: block;
   position: absolute;
@@ -187,90 +159,89 @@ section#messagebox:before{
   width: 2px;
   height: 100%;
   border:4px;
-  /* background: rgba(37,48,59,0.6);    */
 }
 
 
 
 section#messagebox article{
-  /* width: 40%; */
+
   margin: 0 0 5px 0;
   position:relative;
   
-  
 } 
+
 section#messagebox article:after{
+
   content:'';
   display:block;
   clear:both;
+ 
 }
+
 section#messagebox .container-msg{
+
   width:100%;
-  /* margin-top: 2px;
-  margin-bottom:2px;
-  margin-left: 2px;
-  margin-right:2px; */
-  border: 1px solid rgb(3, 182, 12);
+  border: 1px solid  #7c93de;;
   clear:both;
   display:block;
   margin-left: 20px;
 
 }
+
 section#messagebox .containers{
+
   padding:40px;
-  /* border:1px solid grey; */
   border-radius: 6px;
   top:1rem;
   display:block;
   position: relative;
-  /* margin-bottom: 15rem; */
-  /* height:2rem; */
   margin-top: 10px;
   margin-bottom: 10px;
-  /* margin-left: 15rem;
-  margin-right: 15rem; */
   width:20rem;
+  
 }
+
 .container-right{
+
   margin-left: 15rem;
   margin-right: 15rem;
-  /* background-color: #ebedf5; */
-  background-color: rgb(209, 243, 245);
+  background-color: rgb(189, 250, 254);
   float:right;
 
 }
+
 .container-left{
+
   margin-left: 5rem;
   margin-right: 13rem;
-  /* background-color: #ebedf5; */
   background-color: rgb(255, 255, 172);
   float:left;
 
 }
 
 section#messagebox .container-right:after {
+
   content: '';
-  /* background-color: #ebedf5; */
   border-radius: 6px 6px 6px 0;
-  background-color: rgb(209, 243, 245);
+  background-color: rgb(189, 250, 254);
   left:-5px;
   position: absolute;
   top: 25px;
   right: -15px;
       width: 20px;
       height: 20px;
-      /* border:1px dashed black; */
+    
   
   -webkit-transform: rotate(45deg);
 
  
 
 }
+
 section#messagebox .container-left:after{
+
   content: '';
-  /* background-color: #ebedf5; */
   background-color: rgb(255, 255, 172);
-  /* left:-15px; */
   position: absolute;
   top: 25px;
   right: -10px;
@@ -281,7 +252,7 @@ section#messagebox .container-left:after{
 }
 
 section#messagebox .containers p{
-  /* padding: 5px; */
+
   border-radius: 6px 6px 0 0;
   position: relative;
   letter-spacing: -1px;
@@ -289,24 +260,22 @@ section#messagebox .containers p{
   color: rgb(131, 81, 81);
   font-size: 1rem;
   text-align: right;
-  /* background-color: #ebedf5; */
-  /* background-color: rgb(225, 225, 225); */
+
   
 }
 section#messagebox .containers h3{
-  /* padding: 5px; */
+
   border-radius: 6px 6px 0 0;
   position: relative;
   letter-spacing: -1px;
   margin: 0;
- 
   font-size: 1.3rem;
   text-align: right;
-  /* background-color: #ebedf5; */
-  /* background-color: rgb(250, 239, 250); */
+
   
 }
 section#messagebox .container-right h2{
+
   color: rgb(255, 136, 136);
   text-align: right;
   font-size: 1.4rem;
@@ -314,23 +283,28 @@ section#messagebox .container-right h2{
 
 
 section#messagebox .container-left h2{
+
   color: rgb(30, 182, 247);
   text-align: right;
   font-size: 1.4rem;
-  z-index: 4;
 }
 .attach{
-  /* border: 1px solid gray; */
+
   width:300px;  
 }
 #attachments
 {
 
-  /* height:500px; */
   font-size: 1rem;
   z-index: 1;
   
 }
+.fa-plus:hover{
+
+  color: rgb(216, 17, 143);
+  font-size: 1.4rem;
+}
+
 #attachments input
 {
   width:100rem;
@@ -339,41 +313,50 @@ section#messagebox .container-left h2{
   height: 4rem;
   
 }
-#attachments #img
-{
-  width:100rem;
-  font-size: 1rem;
-  
-}
-@media screen and (max-width:700px){
-  section#messagebox .containers{
-    padding:10px;
 
+
+#attachments p{
+  font-size: 1rem;
+}
+
+@media screen and (max-width:700px){
+
+  section#messagebox .containers{
+
+    padding:10px;
     margin-top: 10px;
     margin-bottom: 10px;
 
-    
-  
   }
+
   .container-right{
+
     margin-left: 10rem;
-    margin-right: 1rem;
+    margin-right: 2rem;
 
   }
+
   .container-left{
     margin-left: 0rem;
     margin-right: 10rem;
 
   
   }
+
+  section#messagebox .container-right h2{
+
+    font-size: 1.2rem;
+  }
+
+  section#messagebox .containers h3{
+    font-size: 1rem;
+  }
+
   .hero-image#givedisplayname{
    
-
-
     padding: 100px;
     margin-top: 0px;
     margin-right: 10px;
-
     margin-left: 0px;
     display: block;
     position: relative;
@@ -381,17 +364,17 @@ section#messagebox .container-left h2{
 
 }
   .displayform{
+
     text-align: center;
     margin-left:10%;
     padding: 30px;
     display: inline-block;
   }
   .displayform input{
-    /* margin-top: 10px;   */
+
     width:250px;
     text-align: center;
-  
-   
+
   }
   
 }

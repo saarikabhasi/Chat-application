@@ -16,9 +16,9 @@ Flack Login
 <div id= "channel">  
     <div class ="container">
         <div class="row justify-content-center">
-            <div class="col-lg-8-offset-2 animation_fading_Down1 center pt-3">
+            <div class="col-lg-8-offset-2  pt-3">
                 <h1>#{{channelname}}</h1>
-                <p>description of channel</p>    
+            
             </div>
         </div>
         <section id ="messagebox">
@@ -66,35 +66,32 @@ Flack Login
             </div>
                 <div class="channelwritemessageClass">
                
-                        <h6 class="write">
-                            <input type="text" id="writemessageID" name="writemessage" placeholder="Message {{channelname}}"> 
-                            <span>
-                                <button type="submit" id ="sendbutton" value="send message">send</button>
-                            </span>
-                            <div>
+                    <h6 class="write">
+                        <input type="text" id="writemessageID" name="writemessage" placeholder="Message {{channelname}}"> 
+                        <span>
+                            <button type="submit" id ="sendbutton" onclick = "submitted()" value="send message">send</button>
+                        </span>
+                        <div>
+                            
+                            <a class ="btn-link " href ="#attachments" data-toggle="collapse" role="span" aria-expanded="false" aria-controls="attachments"><i class="fas fa-plus"> </i></a>
+                            <div class="attach">
+                                <span id="attachments"  class="collapse" >
+                                    <ul> <h4>Image  </h4> <p class ="lead text-danger">*only jpg files </p><input type="file" id="img" name="img" accept="image/*" > </ul>
                                 
-                                <a class ="btn-link " href ="#attachments" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="attachments"><i class="fas fa-plus"> </i></a>
-                                <div class="attach">
-                                <span id="attachments"  class=" collapse" >
-                                    <ul> image <input type="file" id="img" name="img" accept="image/*" ></ul>
-                                   
-                                    <ul> documents<input type="file" id ="doc" name ="doc" accept=".doc,.docx,.pdf"></ul>
+                                    <ul> <h4>documents<p class="lead text-danger">*only pdf,docx,doc files</p></h4> <input type="file" id ="doc" name ="doc" accept=".doc,.docx,.pdf"></ul>
                                 
                                 </span>
                             </div>
-                            
-                        
-                           </div> </h6>
-                            
-                        
-                   
-                 
+                        </div> 
+                    </h6>
 
                 </div>
             </article>
         </section>
     </div>
 </div>   
-
+<script>
+    
+</script>
 
 {% endblock %}

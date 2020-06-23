@@ -3,24 +3,103 @@
         // Connect to websocket
         var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
         
+            // Send button activate only if there is a message or attachments. 
+            document.querySelector('#sendbutton').disabled = true;
 
-        //socket connect
+            // Message check
+            document.getElementById('writemessageID').onkeyup = () => {
+
+              if (document.getElementById('writemessageID').value.length > 0){
+
+                document.querySelector('#sendbutton').disabled = false;
+              }
+              else{
+                    //Check if document or image is attached
+                    if (document.getElementById('doc').value.length >0 || document.getElementById('img').value.length >0) {
+        
+                        document.querySelector('#sendbutton').disabled = false;
+                    }
+                    else{
+                        document.querySelector('#sendbutton').disabled = true;
+                    }
+                }
+                   
+            }
+            
+            document.getElementById('doc').onchange=()=>{
+                
+                //Check if document attached
+
+                if (document.getElementById('doc').value.length > 0){
+                    document.querySelector('#sendbutton').disabled = false;
+                }
+                else {
+                    //Check if image is attached or if there is a message 
+
+                    if (document.getElementById('img').value.length >0 || document.getElementById('writemessageID').value.length >0) {
+                        document.querySelector('#sendbutton').disabled = false;
+                    }
+                    else{
+                        document.querySelector('#sendbutton').disabled = true;
+                    }
+                }
+            }
+
+              
+            document.getElementById('img').onchange=()=>{
+                //Check if img attached
+
+                if (document.getElementById('img').value.length > 0){
+                    document.querySelector('#sendbutton').disabled = false;
+                }
+                else {
+                      //Check if document is attached or if there is a message 
+                    if (document.getElementById('doc').value.length >0 || document.getElementById('writemessageID').value.length >0) {
+                        document.querySelector('#sendbutton').disabled = false;
+                    }
+                    else{
+                        document.querySelector('#sendbutton').disabled = true;
+                    }
+                }
+
+            }
+
+            // Send message button
+            submitted =()=>{
+       
+                document.querySelector('#sendbutton').disabled = true;
+              
+                // Stop form from submitting
+                return false;
+            }
+       
+           
+
+
+        //Socket connect
         socket.on('connect', () => {
-            console.log("socket connect")
+
+            //Emit joined message
             socket.emit('joined');     
-            console.log("socket after join")
+        
+            // When user click send button 
             document.querySelector('#sendbutton').addEventListener('click', () => {
                 
+                // Get message, time and date
                 let message = document.getElementById("writemessageID").value;
                 let currenttime = new Date();
                 
                 time = ` ${currenttime.toLocaleTimeString() }`;
                 date = `  ${currenttime.toLocaleDateString()} `;
-                console.log("send attachments",document.getElementById('img').value,document.getElementById('doc').value)
+
+                //If there are attachments, removing their path 
                 if (document.getElementById('img').value){
                     attachimg= document.getElementById('img').value.replace("C:\\fakepath\\", "");
                 }
-                else{ attachimg= ""}
+                else{ 
+                    attachimg= ""
+                }
+
                 if (document.getElementById('doc').value){
                     attachdoc= document.getElementById('doc').value.replace("C:\\fakepath\\", "");
                 }
@@ -28,15 +107,13 @@
                     attachdoc =""
                 }
                 
-                   
-                    
-                
-                
-
-                console.log("Send",attachimg,attachdoc)
+               // Send message to socket
                 socket.emit('send message' ,message,time,date,attachimg,attachdoc);
 
+                //Set all values to be empty
                 document.getElementById("writemessageID").value = '';
+                document.getElementById('img').value = '';
+                document.getElementById('doc').value ='';
         
        
             });
@@ -46,29 +123,28 @@
 
         socket.on('announce message', data => {
 
-            //set current channel
-            // console.log("currentchannel",localStorage.getItem('currentchannel'))
+            //Set current channel
             if  (localStorage.getItem('currentchannel')){
                 localStorage.removeItem('currentchannel');
             }
         
             localStorage.setItem('currentchannel', data.currentchannel);
-            console.log("current channel", localStorage.getItem('currentchannel'))
+            
 
-            //create new div for displaying new messages
+            //Create new div for displaying new messages
             let newDiv = document.createElement('div');
             
-            // place new div to right if current user is sending message
+            // Place new div to right if current user is sending message
             if (data.username == localStorage.getItem('name')){
                 newDiv.className = 'containers container-right';
             }
-            //place new div to left if other users are sending message
+            //Place new div to left if other users are sending message
             else{
                 newDiv.className = 'containers container-left ';
             }
 
             
-            // creating other elements of new messages div
+            // Creating other elements of new messages div
             let newP1 = document.createElement('h2');
             newP1.innerHTML = data.username;
 
@@ -83,17 +159,17 @@
             let newP4 = document.createElement('p');
             newP4.className = 'lead';
             newP4.innerHTML = data.date;
-            console.log("attachments",data.attachment)
+
 
             if (data.attachment){
-                console.log(data.attachment[0],data.attachment[1])
+       
                 if (data.attachment[0]){
                     var extension = data.attachment[0].split('.').pop();
                     if (extension == "jpg") {
                         var newP5 = document.createElement('img');
                         let attachimg = data.attachment[0].replace("C:\\fakepath\\", "");
                         
-                        console.log("A",attachimg)
+                     
                         newP5.alt = attachimg
                         newP5.width="100"
                         newP5.height="100"
@@ -120,11 +196,11 @@
             newDiv.appendChild(newP3);
             newDiv.appendChild(newP4);
             if (newP5){
-                console.log("P5",newP5)
+              
                 newDiv.appendChild(newP5);
             }
             if (newP6){
-                console.log("P6",newP6)
+     
                 newDiv.appendChild(newP6);
             }
         

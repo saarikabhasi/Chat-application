@@ -22,7 +22,7 @@ Flack chat application
               {% if search_error != "" %}
                 {% if allchannels is defined and allchannels|length %}
                   {% for channel in allchannels %}
-                      <a id ="currentchannel" href="{{url_for('channel',channelname = channel) }}" ><p>{{channel}}</p></a>
+                   <a id ="currentchannel" href="{{url_for('channel',channelname = channel) }}" ><h2> {{channel}}</h2></a>
                   {% endfor %}   
                 {% else %} 
                     <p class="notfound"> No channels found. Create one </p>
@@ -33,7 +33,7 @@ Flack chat application
               <form id ="new-channel"   action ="{{ url_for('createchannel') }}" method="POST">
                 <div>
                   <a class ="btn-link " data-toggle="modal" href="#create" role="button" aria-expanded="false" aria-controls="create">
-                    <p>Create new channel</p>
+                    <h3><i class="fas fa-plus"> Create new channel</i> </h3>
                   </a>
    
                   <div class="modal " tabindex="-1" role="dialog" id = "create">
@@ -77,11 +77,13 @@ Flack chat application
                           <button class="btn btn-primary btn-rounded btn-sm my-0" type="submit">Search</button>
                       </div>
                       {% if search_error is defined and search_error|length %}
-                      <p class="text-center">{{search_error}}</p>
-                      {%endif%}
-                      {%if searchresults is defined and searchresults|length %}
-                      <p>{{searchresults}}</p>
-                      <hr>
+                        <p class="text-center">{{search_error}}</p>
+                        {%else %}
+                        {%if searchresults is defined and searchresults|length %}
+                          <!-- <p>{{searchresults}}</p> -->
+                          <a id ="currentchannel" href="{{url_for('channel',channelname = searchresults) }}" ><h2>{{searchresults}}</p></h2>
+                          <hr>
+                        {%endif%}
                       {%endif%}
                     </div>
                 </form>
@@ -92,8 +94,9 @@ Flack chat application
     </article>
   </section>  
 </div>
-<script>
 
+<script>
+  document.body.style.backgroundColor = "lightblue";
   // if error while creating new channel, display create channel modal again.
   var errors='{{error_msg}}';
   if (errors.length > 0){
