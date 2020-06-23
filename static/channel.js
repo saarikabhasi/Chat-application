@@ -160,29 +160,42 @@
             newP4.className = 'lead';
             newP4.innerHTML = data.date;
 
-
+            
+            //if there is a attachment in message
+            
             if (data.attachment){
-       
+            
+                // image
                 if (data.attachment[0]){
+                    
                     var extension = data.attachment[0].split('.').pop();
+                    
+                    // if jpg file format
                     if (extension == "jpg") {
-                        var newP5 = document.createElement('img');
+                       
                         let attachimg = data.attachment[0].replace("C:\\fakepath\\", "");
                         
-                     
+                        // new Div for image
+                        var newP5 = document.createElement('img');
                         newP5.alt = attachimg
                         newP5.width="100"
                         newP5.height="100"
-                        // newP5.className = 'lead float-right';
                         newP5.innerHTML = attachimg;
                     }
                 }
+                
+                // document
                 if (data.attachment[1]){
                     var extension = data.attachment[1].split('.').pop();
+                    
+                    // if pdf, doc, docx
+                    
                     if (extension === "pdf" || extension === "doc" || extension === "docx") {
-                        var newP6 = document.createElement('p');
+                      
                         let attachdoc = data.attachment[1].replace("C:\\fakepath\\", "");
                         
+                        //new Div for document
+                        var newP6 = document.createElement('p');
                         newP6.className = 'lead';
                         newP6.innerHTML = attachdoc ;
                     }
@@ -195,6 +208,9 @@
             newDiv.appendChild(newP2);
             newDiv.appendChild(newP3);
             newDiv.appendChild(newP4);
+            
+            // if there is any attachments
+            
             if (newP5){
               
                 newDiv.appendChild(newP5);
@@ -210,6 +226,7 @@
         let length = document.getElementsByClassName("container-msg").length;
         
         if (length == 0){
+            
             //if first message to this channel
 
             document.getElementsByClassName("container-msg")[0].appendChild(newDiv);
@@ -217,6 +234,7 @@
         
         else{
            
+            //append to existing messages
             document.getElementsByClassName("container-msg")[length-1].appendChild(newDiv);
         }
         
