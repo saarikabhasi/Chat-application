@@ -3,6 +3,23 @@
 Webpage link: https://courses.edx.org/courses/course-v1:HarvardX+CS50W+Web/course/
 
 # Project 2: Flack
+<p>
+  
+<img src="https://user-images.githubusercontent.com/55930906/85459858-a7899e00-b570-11ea-8700-fe8db7a2810b.png?raw=true"  width =450 height =450 alt= "displayname">
+
+<img src="https://user-images.githubusercontent.com/55930906/85459925-b7a17d80-b570-11ea-9f1d-c5fb9d7f06c8.png?raw=true"  width =450 height =450 alt= "channel list">
+
+<img src="https://user-images.githubusercontent.com/55930906/85459974-c25c1280-b570-11ea-8265-d0e2f6c6ce4f.png?raw=true"  width =450 height =450 alt= " create channel">
+
+<img src="https://user-images.githubusercontent.com/55930906/85459995-c9832080-b570-11ea-968e-c516ebce7706.png?raw=true"  width =450 height =450 alt= " see all channels">
+
+
+<img src="https://user-images.githubusercontent.com/55930906/85460034-d30c8880-b570-11ea-9063-02c0058799d5.png?raw=true"  width =450 height =450 alt= "channel message">
+
+
+<img src="https://user-images.githubusercontent.com/55930906/85460179-f9322880-b570-11ea-88b1-d81e9f0518df.png?raw=true"  width =450 height =450 alt= "message attachments">
+
+</p>
 
 ### Description:
 
@@ -16,96 +33,30 @@ The Flack application allows its user to communicate with each other through cha
   * Join existing channel
   * See previous messages (upto 100 messages)
   * Shows each message's message, time, date and attachments (if any).
-  
-    **Personal touch:**
-  
-    
   * search for a channel
   * send attachments : Image (jpg) and Document(doc,docx,pdf)
  
-
-### File Specific and Feature details:
-
-    1. application.py:
-    
-       * Server side program : Developed in Python and Flask
-       * Handles socket transactions using flask_socketio
-       * Stores channel chat messages in a dictionary. If channel messages exceeds 100 messages, pops out first message from the dictionary. 
-       * Chat application routing, error handling and user session information .
-
-  #### File path: templates/:
-  
-     2. index.html:
-     
-        * Displaying all channels ( hyperlink for same )
-        
-        * create channel ( displayed in a modal )
-          * A new channel is created only if the new channel name does not already exists.
-          
-        * Search for existing channels
-          * Shows result if found a match ( hyperlink for same )
-          
-        * Javascript code :
-          * Setting background color of body
-          * Display create channel modal again, if channel name already exists.
-          
-   **Remembering Channel** 
-   
-          * If the user was communicating on a channel and closes the window, and when the user open the application again, it displays previous channel.
-            
-     3. channel.html:
-     
-        * Display selected channel information and previous messages ( shows upto 100 messages )
-        * Displays message on right if send by current user and left if send by other user
-        * show each message's time, date and attachments.
-        * Write message input box where user can type message, attach image or documents and send button.
-        
-        
-     4. login.html:
-     
-        * Gets user display name
-        * stores name in local storage and in flask session
-        
-     5. layout.html:
-     
-        * Base layout for all the above html files.
-        
-        * Navigation bar
-          * Logo
-          * All channnels (redirects to index.html and shows all channels)
-          * Shows current user's display name
-          * Logout button
-        
-        * Javascript code : 
-          * when user clicks logout button, removes display name and last channel information from local storage.
-          
-   #### File path: static/: 
-   
-      6. login.js:
+### Setup:
+---------------
+  ``` 
+    # clone repository
+      git clone https://github.com/saarikabhasi/CS50-project2-Flack.git
       
-         * Set background color for body
-         
-         * Checks in local storage for display name
-            * if already set then redirects to server with previous display name. 
-            * if not already set then gets display name from user.
-            
-        7. Channel.js:
-         
-         * On DOMContentLoaded:
-           * Disables send message button if message is empty. Send message button is active only if there is a message or any attachements.  
-           * Establish Socket connection between server and client.
-           * Send message: Socket emit with user message , date, time and attachments (if any) to server. 
-           * Announce message: Socket announce by creating new divs for the new messages for client side .
-           
-         8. main.css:
-         
-          * CSS Styling for entire application.
-          
-         9. requirements.txt:
-         
-          * Information about the Python packages that are used by the website.
-           
-         
+    # Create a virtualenv(optional)
+      python3 -m venv venv  
+      
+    # Activate the virtualenv
+      source venv/bin/activate or .venv/bin/activate
+      
+    # Install all dependencies
+       pip install -r requirements.txt
+       
+    # ENV Variables
+        export FLASK_APP=application.py 
+        export FLASK_ENV=development  #To enable debug mode. Reference#https://flask.palletsprojects.com/en/1.1.x/config/
+        
+   ```
+        
 ### Built with:
 --------------------
 
