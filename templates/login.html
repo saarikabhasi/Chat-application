@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block heading %}
+
+
+Flack Login
+
+{% endblock %}
+
+
+{% block body %}
+    <!-- Login page -->
+    <div class="hero-image" id ="givedisplayname">
+        <div class="hero-text">
+            <form action ="{{ url_for('displayname') }}" method ="post" id ="form">
+              
+                <div class="displayform">
+                    <input type="text" class="form-control  form-control-lg" autocomplete="off" autofocus placeholder="Display name" name = "name" id="name" type="text">
+                    <span>
+                        <button type="button" class="btn btn-primary" type="submit" data-dismiss="modal"onclick="getname()" >Submit</button>
+                    </span>
+                </div>
+              
+                
+               
+                
+            </form>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='login.js') }}"></script>
+
+{% endblock %}
