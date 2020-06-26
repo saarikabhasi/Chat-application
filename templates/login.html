@@ -18,12 +18,13 @@ Flack Login
                     <span>
                         <button type="button" class="btn btn-primary" type="submit" data-dismiss="modal"onclick="getname()" >Submit</button>
                         {% if err_msg is defined and err_msg|length %}
-                        <p class= "text-center text-danger">{{err_msg}}</p>
+                        
                         {% endif %}
                     </span>
+                    
                 </div>
               
-                
+                <p class= "text-center">{{err_msg}}</p> 
                
                 
             </form>

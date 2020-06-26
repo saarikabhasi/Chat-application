@@ -8,6 +8,9 @@ body{
   text-align:center;
 
 }
+#footer .fa-heart{ 
+  color: rgb(225, 88, 73);
+}
 #navbarNav a{
   font-size: 1.1rem;
 }
@@ -78,6 +81,9 @@ body{
   float: center;
   position: relative;
   background-color: rgb(228, 111, 111);
+
+}
+.displayform p{
 
 }
  .channelwritemessageClass #writemessageID{
@@ -334,14 +340,16 @@ section#messagebox .container-left h2{
 {
   width:100rem;
   height:2px;
-  font-size: 1.3rem;
+  font-size: 1rem;
   height: 4rem;
   
 }
 
-
+#attachments h4{
+  font-size: 1.1rem;
+}
 #attachments p{
-  font-size: 1.3rem;
+  font-size: 0.8rem;
 }
 #deletemessage{
   background-color: transparent;
