@@ -253,6 +253,7 @@
                 newP2.className = 'lead text-secondary';
                 newP2.innerHTML =  data.message;
 
+<<<<<<< HEAD
                 let newP3 = document.createElement('p');
                 newP3.className = 'lead';
                 newP3.innerHTML = data.time;
@@ -301,6 +302,46 @@
                             newP6.innerHTML = attachdoc ;
                         }
                 
+=======
+            
+            //if there is a attachment in message
+            
+            if (data.attachment){
+            
+                // image
+                if (data.attachment[0]){
+                    
+                    var extension = data.attachment[0].split('.').pop();
+                    
+                    // if jpg file format
+                    if (extension == "jpg") {
+                       
+                        let attachimg = data.attachment[0].replace("C:\\fakepath\\", "");
+                        
+                        // new Div for image
+                        var newP5 = document.createElement('img');
+                        newP5.alt = attachimg
+                        newP5.width="100"
+                        newP5.height="100"
+                        newP5.innerHTML = attachimg;
+                    }
+                }
+                
+                // document
+                if (data.attachment[1]){
+                    var extension = data.attachment[1].split('.').pop();
+                    
+                    // if pdf, doc, docx
+                    
+                    if (extension === "pdf" || extension === "doc" || extension === "docx") {
+                      
+                        let attachdoc = data.attachment[1].replace("C:\\fakepath\\", "");
+                        
+                        //new Div for document
+                        var newP6 = document.createElement('p');
+                        newP6.className = 'lead';
+                        newP6.innerHTML = attachdoc ;
+>>>>>>> 461fcc16c73d1f5557fa9d9f4136dd153d4ca204
                     }
                 }
                 
@@ -316,13 +357,41 @@
                 
                     newDiv.appendChild(newP5);
                 }
+<<<<<<< HEAD
                 if (newP6){
+=======
+            }
+               
+
+            newDiv.appendChild(newP1);
+            newDiv.appendChild(newP2);
+            newDiv.appendChild(newP3);
+            newDiv.appendChild(newP4);
+            
+            // if there is any attachments
+            
+            if (newP5){
+              
+                newDiv.appendChild(newP5);
+            }
+            if (newP6){
+     
+                newDiv.appendChild(newP6);
+            }
+        
+>>>>>>> 461fcc16c73d1f5557fa9d9f4136dd153d4ca204
         
                     newDiv.appendChild(newP6);
                 }
             
         
+<<<<<<< HEAD
                 let length = document.getElementsByClassName("container-msg").length;
+=======
+        if (length == 0){
+            
+            //if first message to this channel
+>>>>>>> 461fcc16c73d1f5557fa9d9f4136dd153d4ca204
 
                 // display delete button option before reloading page
                  if (data.username == localStorage.getItem('name')){
@@ -365,11 +434,16 @@
         // error function used if channel is not found
         error=(channel)=>{
            
+<<<<<<< HEAD
             let newP = document.createElement('p');
             newP.className = 'lead  text-center text-danger';
             newP.innerHTML =  "Error: No channel " + `${channel}` + " is found" ;
             document.getElementsByClassName("container")[0].appendChild(newP)
             
+=======
+            //append to existing messages
+            document.getElementsByClassName("container-msg")[length-1].appendChild(newDiv);
+>>>>>>> 461fcc16c73d1f5557fa9d9f4136dd153d4ca204
         }
 
         
