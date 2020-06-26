@@ -30,26 +30,60 @@ Flack Login
                             {% if key == channelname %}
                                 {%set msg = value %}
                                 {% for msg in msg %}
+
+                                    <!-- user's messages to right -->
                                     {% if msg[0] == account %}
+
                                         <div class="containers container-right ">
-                                            <h2 >{{msg[0]}}</h2>
-                                            <h3 class="lead text-secondary">{{msg[1]}}</h3>
-                                           <div > <p class="lead">{{msg[2]}}</p></div>
-                                           <div > <p class="lead">{{msg[3]}}</p></div>
-                                           {% if msg[4] is defined %}
-                                                <div> <img alt="{{msg[4][0]}}" ></div>
-                                                <div> <p class="lead">{{msg[4][1]}}</p></div>
+                                    
+                                            {% if msg[1]  != "null" %}
+                                                <h2 >{{msg[0]}}</h2>
+                                                <h3 class="lead text-secondary">{{msg[1]}}</h3>
+                                                <div > <p class="lead" id ="date">{{msg[2]}}</p></div>
+                                                <div > <p class="lead" id ="time">{{msg[3]}}</p></div>
+                                                {% if msg[4] is defined %}
+                                                    <div> <img alt="{{msg[4][0]}}" ></div>
+                                                    <div> <p class="lead">{{msg[4][1]}}</p></div>
+                                                {%endif%}
+                                                {% set ind = loop.index0 %}
+                                                
+                                                <div> <input id="deletemessage" class="float-left btn-sm" type ="submit" value ="Delete this message" onclick = "deletemessage({{ind}})"></div>
+                                            {%else %}
+
+                                                <!-- if message is deleted by user  -->
+                                                <h2 >{{msg[0]}}</h2>
+                                                <h5 class="lead text-secondary">You deleted this message</h5>
+                                                <p class="lead">{{msg[2]}} on {{msg[3]}}</p>
                                             {%endif%}
+ 
+       
                                                 
                                         </div>
                                   
-                                        {%else%}
+                                    {%else%}
+                                        
+                                        <!-- other user's message to left -->
                                         <div class="containers container-left ">
-                                            <h2 >{{msg[0]}}</h2>
-                                            <h3 class="lead text-secondary">{{msg[1]}}</h3>
-                                            <div > <p class="lead">{{msg[2]}}</p></div>
-                                            <div > <p class="lead">{{msg[3]}}</p></div>
+                                        
+                                            {% if msg[1]  != "null" %}
+                                                <h2 id ="username">{{msg[0]}}</h2>
+                                                <h3 class="lead text-secondary" id ="message">{{msg[1]}}</h3>
+                                                <div > <p class="lead" id ="date">{{msg[2]}}</p></div>
+                                                <div > <p class="lead" id ="time">{{msg[3]}}</p></div>
+
+                                                {% if msg[4] is defined %}
+
+                                                <div> <img alt="{{msg[4][0]}}"  ></div>
+                                                <div> <p class="lead">{{msg[4][1]}}</p></div>
                                             
+                                                {%endif%}
+
+                                            {% else %}
+                                                <!-- if message was deleted by other user -->
+                                                <h2 >{{msg[0]}}</h2>
+                                                <h5 class="lead text-secondary">This message was deleted</h5>
+                                                <p class="lead">{{msg[2]}} on {{msg[3]}}</p>
+                                            {%endif%}
                                         </div>
                                     {%endif%}
                                 {% endfor %}
@@ -58,12 +92,14 @@ Flack Login
                         {% endfor %}
                     
                     {%endif%}  
+
                     {%if message is defined and message|length%}
                         
                         <p class ="lead">{{message}}</p>
 
                     {%endif%}
             </div>
+                <!-- Write message -->
                 <div class="channelwritemessageClass">
                
                     <h6 class="write">
@@ -72,13 +108,13 @@ Flack Login
                             <button type="submit" id ="sendbutton" onclick = "submitted()" value="send message">send</button>
                         </span>
                         <div>
-                            
+                            <!-- collapse option to upload attachment if, '+'  is clicked by the user -->
                             <a class ="btn-link " href ="#attachments" data-toggle="collapse" role="span" aria-expanded="false" aria-controls="attachments"><i class="fas fa-plus"> </i></a>
                             <div class="attach">
                                 <span id="attachments"  class="collapse" >
                                     <ul> <h4>Image  </h4> <p class ="lead text-danger">*only jpg files </p><input type="file" id="img" name="img" accept="image/*" > </ul>
                                 
-                                    <ul> <h4>documents<p class="lead text-danger">*only pdf,docx,doc files</p></h4> <input type="file" id ="doc" name ="doc" accept=".doc,.docx,.pdf"></ul>
+                                    <ul> <h4>Documents<p class="lead text-danger">*only pdf,docx,doc files</p></h4> <input type="file" id ="doc" name ="doc" accept=".doc,.docx,.pdf"></ul>
                                 
                                 </span>
                             </div>

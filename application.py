@@ -6,13 +6,13 @@ from flask_session import Session
 
 
 app = Flask(__name__)
-# app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 app.config["SECRET_KEY"] = "my secret key"
 socketio = SocketIO(app)
-# socketio = SocketIO(app,engineio_logger=True)
 
+#Channel list
 channels=[]
 
+#Channel Messages
 channelmessages = dict()
 
 @app.route("/")
@@ -30,7 +30,7 @@ def displayname():
 
   #making sure if user has logged in
   if 'name' in session:
-     if session['name']:
+    if session['name']:
        message = session['name']
        return render_template ("index.html",account = message)
 
@@ -45,7 +45,6 @@ def displayname():
       return render_template("login.html",err_msg="Display name is required to begin chat")
 
     else:
-
       #set display name
       session['name']= name 
       return redirect(url_for('index'))  
@@ -61,7 +60,8 @@ def createchannel():
   if 'name' in session:
      if session['name']:
        message =session['name']
-      
+
+   
   error_msg=""
 
   if request.method == "POST":
@@ -75,6 +75,9 @@ def createchannel():
       error_msg="channel name is already taken"
     else:
       channels.append(channelname)
+
+      # create a new deque to store messages
+      channelmessages[channelname] = deque()
       
     return render_template("index.html", error_msg=error_msg, account = message,allchannels=channels)
 
@@ -102,7 +105,7 @@ def search():
       return render_template("index.html",search_error = No_Results, allchannels=channels,account=message)
 
     else:
-      #strip white space
+      #remove trailing white space
       query=query.strip()
 
       #transform to lower case as channel names are stored in lower case
@@ -148,24 +151,62 @@ def logout():
 @socketio.on('send message')
 def chat(message,time,date,attachimg,attachdoc):
 
-  #retreive information from socket emit. 
+  #retreive information from socket. 
   
   username = session['name']
   channelname = session['currentchannel']
   attachment = [attachimg,attachdoc]
+
+  #if channel does not exist, return error
+  if channelname not in channelmessages:
+    return False,channelname
+
+  #message details in a list
   messagedetail = [username,message,time,date,attachment]
  
-  #store channel messages
-  if channelname not in channelmessages:
-      channelmessages[channelname] = deque()
-
-  # if channel message more than 100, remove old message
-  if len(channelmessages[channelname]) >=100:
-    channelmessages[channelname].popleft()
 
   #append new message
   channelmessages[channelname].append(messagedetail)
-  
-  
-  emit('announce message', {"username":username,"message": message,"time":time, "date":date,"currentchannel":channelname,"attachment":[attachimg, attachdoc]}, broadcast=True)
 
+  maximum_number_ofmessage = 100
+  number_ofmessages_inchannel = len(channelmessages[channelname])
+
+  # if channel message more than 100, remove old message
+  if number_ofmessages_inchannel > maximum_number_ofmessage :
+
+    total_numberofmessages_tobe_deleted = abs(maximum_number_ofmessage - number_ofmessages_inchannel)
+
+    # popleft until channel messages  100 message
+    if total_numberofmessages_tobe_deleted > 0:
+      for i in range(total_numberofmessages_tobe_deleted):
+          channelmessages[channelname].popleft()
+
+
+  
+
+  if channelname in channelmessages:
+
+    #send announce message
+    emit('announce message', {"username":username,"type":"new message","message": message,"time":time, "date":date,"currentchannel":channelname,"attachment":[attachimg, attachdoc]}, broadcast=True)
+  else:
+    return False,channelname
+
+#delete message
+@socketio.on('delete message')
+def deletemessage(index,time,date):
+    username = session['name']
+    channelname = session['currentchannel']
+
+    #if channel does not exist, return error
+    if channelname not in channelmessages:
+      return False, channelname
+
+
+    #remove the message only if message index exist in dictonary
+    if len(channelmessages[channelname]) > index:
+
+      #replace original message with "null",time and date
+      channelmessages[channelname][index][1::] =["null",time,date]
+      
+      #send announce message
+      emit('announce message', {"username":username,"type":"delete" ,"index":index, "time" :time , "date":date,"currentchannel":channelname}, broadcast=True)

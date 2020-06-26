@@ -17,6 +17,9 @@ Flack Login
                     <input type="text" class="form-control  form-control-lg" autocomplete="off" autofocus placeholder="Display name" name = "name" id="name" type="text">
                     <span>
                         <button type="button" class="btn btn-primary" type="submit" data-dismiss="modal"onclick="getname()" >Submit</button>
+                        {% if err_msg is defined and err_msg|length %}
+                        <p class= "text-center text-danger">{{err_msg}}</p>
+                        {% endif %}
                     </span>
                 </div>
               

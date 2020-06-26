@@ -1,7 +1,15 @@
+body{
+  font-family: Roboto;
+  width: 100%;
+  height: 100%; 
+}
 #footer{
 
   text-align:center;
 
+}
+#navbarNav a{
+  font-size: 1.1rem;
 }
 
 .container-channels {
@@ -12,24 +20,25 @@
 
 .container-channels h2{
 
-  font-size: 1.5rem;
-  color:rgb(228, 111, 111);
+  font-size: 1.8rem;
+  /* color:rgb(203, 130, 130); */
   text-decoration: underline;
   padding:10px;
+  color:whitesmoke;
 
 }
 
 .container-channels p{
 
-  font-size: 1rem;
-  color:rgb(228, 111, 111);
-
+  font-size: 1.4rem;
+  color:whitesmoke;
+  
 }
 
 .container-channels h3{
 
   font-size: 1.2rem;
-  color:rgb(228, 111, 111);
+  color:whitesmoke;
   text-decoration: underline;
 
 }
@@ -77,7 +86,7 @@
     position: relative;
     text-align: center;
     margin-top: 20px;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     margin-top: 20px;
     height: 40px;
 }
@@ -91,10 +100,19 @@
   margin-top: 120px;
   width:100px;
   height: 40px;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   background-color: rgb(38, 149, 196);
 }
+#create  h5{
+  color:rgb(4, 116, 164);
+  margin-left: 140px;
+  font-size: 1.8rem;
+  /* text-align: center; */
+}
+.modal-footer button{
+  background-color: rgb(0, 166, 255);
 
+}
 .searchbar{
 
   display: grid;
@@ -110,7 +128,7 @@
   margin-top: 20px;
   margin-bottom: 0px;
   margin-right: 20px;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 
 }
 
@@ -122,7 +140,7 @@
   width:auto;
   height: 40px;
   position: relative;
-  background-color: #0075b4;
+  background-color: rgb(228, 111, 111);
   
 }
 
@@ -214,7 +232,7 @@ section#messagebox .containers{
 
   margin-left: 5rem;
   margin-right: 13rem;
-  background-color: rgb(255, 255, 172);
+  background-color: rgb(255, 245, 131);
   float:left;
 
 }
@@ -241,10 +259,11 @@ section#messagebox .container-right:after {
 section#messagebox .container-left:after{
 
   content: '';
-  background-color: rgb(255, 255, 172);
+  /* background-color: rgb(255, 255, 172); */
+  background-color: rgb(255, 245, 131);
   position: absolute;
   top: 25px;
-  right: -10px;
+  right: -7px;
       width: 15px;
       height: 15px;
   
@@ -258,7 +277,7 @@ section#messagebox .containers p{
   letter-spacing: -1px;
   margin: 0;
   color: rgb(131, 81, 81);
-  font-size: 1rem;
+  font-size: 1.3rem;
   text-align: right;
 
   
@@ -269,16 +288,16 @@ section#messagebox .containers h3{
   position: relative;
   letter-spacing: -1px;
   margin: 0;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   text-align: right;
 
   
 }
 section#messagebox .container-right h2{
 
-  color: rgb(255, 136, 136);
+  color: rgb(141, 133, 249);
   text-align: right;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 
 
@@ -286,7 +305,13 @@ section#messagebox .container-left h2{
 
   color: rgb(30, 182, 247);
   text-align: right;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
+}
+.containers h5{
+  font-size:1.3rem;
+  color:rgb(223, 128, 128) !important;
+  text-align: right;
+  padding:10px;
 }
 .attach{
 
@@ -295,30 +320,42 @@ section#messagebox .container-left h2{
 #attachments
 {
 
-  font-size: 1rem;
+  font-size: 1.2rem;
   z-index: 1;
   
 }
 .fa-plus:hover{
 
   color: rgb(216, 17, 143);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 
 #attachments input
 {
   width:100rem;
   height:2px;
-  font-size: 1rem;
+  font-size: 1.3rem;
   height: 4rem;
   
 }
 
 
 #attachments p{
-  font-size: 1rem;
+  font-size: 1.3rem;
+}
+#deletemessage{
+  background-color: transparent;
+  color: rgb(97, 171, 23);
+  border: 0ch;
+  font-size: 1.3rem;
+  position: relative;
+  
 }
 
+#deletemessage:hover{
+  
+  color: #e60a2b;
+}
 @media screen and (max-width:700px){
 
   section#messagebox .containers{
@@ -345,11 +382,11 @@ section#messagebox .container-left h2{
 
   section#messagebox .container-right h2{
 
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
 
   section#messagebox .containers h3{
-    font-size: 1rem;
+    font-size: 1.4rem;
   }
 
   .hero-image#givedisplayname{

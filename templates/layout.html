@@ -1,6 +1,6 @@
 <!DOCTYPE html>
     <head>
-        <title>flack</title>
+        <title>Flack</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
@@ -10,25 +10,24 @@
         <script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity = "sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin = "anonymous"></script>
         <script src='https://kit.fontawesome.com/a076d05399.js'></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.slim.js"></script>
+        <script> src = "https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.slim.dev.js.map"</script>
+        <script>src = "https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.slim.js.map"</script>
         <link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='main.css') }}">
-        <script src="{{ url_for('static', filename='index.js') }}"></script>
         <script src="{{ url_for('static', filename='login.js') }}"></script>
        
     </head>
     <body>
       <script>
-        
-          logout=()=>{
-            if (localStorage.getItem('name')){
-              // console.log(localStorage.getItem('name'));
-              // localStorage.setItem('name', '');
-              localStorage.removeItem('name');
 
-            }
-            if  (localStorage.getItem('currentchannel')){
-                    localStorage.removeItem('currentchannel');
-                }
+        //forget all information stored in local storage  on logout
+          logout=()=>{
+
+            localStorage.clear();
+
           }
+
+          //forget channel information when user click show all channels button
           resetcurrentchannel = () =>{
             if  (localStorage.getItem('currentchannel')){
               localStorage.removeItem('currentchannel');

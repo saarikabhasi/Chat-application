@@ -22,7 +22,7 @@ Flack chat application
               {% if search_error != "" %}
                 {% if allchannels is defined and allchannels|length %}
                   {% for channel in allchannels %}
-                   <a id ="currentchannel" href="{{url_for('channel',channelname = channel) }}" ><h2> {{channel}}</h2></a>
+                   <a id ="currentchannel" href="{{url_for('channel',channelname = channel) }}" ><h2> #{{channel}}</h2></a>
                   {% endfor %}   
                 {% else %} 
                     <p class="notfound"> No channels found. Create one </p>
@@ -40,7 +40,7 @@ Flack chat application
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title">Enter channel name</h5>
+                          <h5 class="modal-title ">Enter channel name</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
@@ -48,7 +48,7 @@ Flack chat application
                         <div class="modal-body">
                             <input type="text" class="form-control  form-control-lg" autocomplete="off" autofocus placeholder="channel name" name = "cname" id="cname" type="text" >
                             {% if error_msg is defined and error_msg|length > 0 %}
-                              <p class="text-danger text-center">{{error_msg}}
+                              <p class="text-center text-danger">{{error_msg}} </p>
                             {%endif%} 
 
                         </div>
@@ -81,7 +81,7 @@ Flack chat application
                         {%else %}
                         {%if searchresults is defined and searchresults|length %}
                           <!-- <p>{{searchresults}}</p> -->
-                          <a id ="currentchannel" href="{{url_for('channel',channelname = searchresults) }}" ><h2>{{searchresults}}</p></h2>
+                          <a id ="currentchannel" href="{{url_for('channel',channelname = searchresults) }}" ><h2>#{{searchresults}}</p></h2>
                           <hr>
                         {%endif%}
                       {%endif%}
@@ -96,7 +96,9 @@ Flack chat application
 </div>
 
 <script>
-  document.body.style.backgroundColor = "lightblue";
+  
+  document.body.style.backgroundColor = 'rgb(' + [0,156,184].join(',') + ')';
+  
   // if error while creating new channel, display create channel modal again.
   var errors='{{error_msg}}';
   if (errors.length > 0){
