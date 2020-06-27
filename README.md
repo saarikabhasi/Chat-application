@@ -5,19 +5,16 @@ Webpage link: https://courses.edx.org/courses/course-v1:HarvardX+CS50W+Web/cours
 # Project 2: Flack
 <p>
   
-<img src="https://user-images.githubusercontent.com/55930906/85910483-1ffc9300-b7ed-11ea-9ef8-870f1c2dd1f3.png?raw=true"  width =450 height =450 alt= "displayname">
+<img src="https://user-images.githubusercontent.com/55930906/85910483-1ffc9300-b7ed-11ea-9ef8-870f1c2dd1f3.png?raw=true"  width =100% height =450 alt= "displayname">
 
-<img src="https://user-images.githubusercontent.com/55930906/85910486-2428b080-b7ed-11ea-86d3-174423323d9c.png?raw=true"  width =450 height =450 alt= "channel list">
+<img src="https://user-images.githubusercontent.com/55930906/85910486-2428b080-b7ed-11ea-86d3-174423323d9c.png?raw=true"  width =100% height =450 alt= "createchannel"
 
-<img src="https://user-images.githubusercontent.com/55930906/85459974-c25c1280-b570-11ea-8265-d0e2f6c6ce4f.png?raw=true"  width =450 height =450 alt= " create channel">
-
-<img src="https://user-images.githubusercontent.com/55930906/85459995-c9832080-b570-11ea-968e-c516ebce7706.png?raw=true"  width =450 height =450 alt= " see all channels">
+<img src="https://user-images.githubusercontent.com/55930906/85910491-27bc3780-b7ed-11ea-9799-6b83a178fd58.png?raw=true"  width =100% height =450 alt= "all channels">
 
 
-<img src="https://user-images.githubusercontent.com/55930906/85910491-27bc3780-b7ed-11ea-9799-6b83a178fd58.png?raw=true"  width =450 height =450 alt= "channel message">
+<img src="https://user-images.githubusercontent.com/55930906/85910493-2b4fbe80-b7ed-11ea-8ac8-326bd2401e5c.png?raw=true"  width =100% height =450 alt= "messages">
 
 
-<img src="https://user-images.githubusercontent.com/55930906/85910493-2b4fbe80-b7ed-11ea-8ac8-326bd2401e5c.png?raw=true"  width =450 height =450 alt= "message attachments">
 
 </p>
 
