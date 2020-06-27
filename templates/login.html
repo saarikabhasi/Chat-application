@@ -8,9 +8,11 @@ Flack Login
 
 
 {% block body %}
+<h2 class="text-center"> Give a display name to begin chat</h2>
     <!-- Login page -->
     <div class="hero-image" id ="givedisplayname">
         <div class="hero-text">
+            
             <form action ="{{ url_for('displayname') }}" method ="post" id ="form">
               
                 <div class="displayform">
@@ -21,10 +23,10 @@ Flack Login
                         
                         {% endif %}
                     </span>
-                    
+                    <p class= "text-center"><b>{{err_msg}}</b></p> 
                 </div>
               
-                <p class= "text-center">{{err_msg}}</p> 
+                
                
                 
             </form>

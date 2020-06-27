@@ -58,7 +58,10 @@ body{
     width: 100%;
 
 }
-
+ h2{
+  
+  color:whitesmoke;
+}
 .displayform{
 
   text-align: center;
@@ -84,7 +87,8 @@ body{
 
 }
 .displayform p{
-
+  padding-top:30px;
+  color:rgb(255, 221, 83);
 }
  .channelwritemessageClass #writemessageID{
 
@@ -365,7 +369,11 @@ section#messagebox .container-left h2{
   color: #e60a2b;
 }
 @media screen and (max-width:700px){
+  h2{
+    margin-right: 35px;
+    font-size:1.5rem;
 
+  }
   section#messagebox .containers{
 
     padding:10px;
