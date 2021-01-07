@@ -3,16 +3,10 @@ Youtube : https://www.youtube.com/watch?v=1waqSyT6Bn8
 # Project 2: Flack
 
 ![alt text](https://user-images.githubusercontent.com/55930906/85910483-1ffc9300-b7ed-11ea-9ef8-870f1c2dd1f3.png?raw=true)
-<img src="https://user-images.githubusercontent.com/55930906/85910483-1ffc9300-b7ed-11ea-9ef8-870f1c2dd1f3.png?raw=true"  width =100% height =450 alt= "displayname">
-
-
-<img src="https://user-images.githubusercontent.com/55930906/85910486-2428b080-b7ed-11ea-86d3-174423323d9c.png?raw=true"  width =100% height =450 alt= "createchannel">
-
-
-<img src="https://user-images.githubusercontent.com/55930906/85910491-27bc3780-b7ed-11ea-9799-6b83a178fd58.png?raw=true"  width =100% height =450 alt= "all channels">
-
-
-<img src="https://user-images.githubusercontent.com/55930906/85910493-2b4fbe80-b7ed-11ea-8ac8-326bd2401e5c.png?raw=true"  width =100% height =450 alt= "messages">
+![alt text](https://user-images.githubusercontent.com/55930906/85910486-2428b080-b7ed-11ea-86d3-174423323d9c.png?raw=true)
+![alt text](https://user-images.githubusercontent.com/55930906/85910491-27bc3780-b7ed-11ea-9799-6b83a178fd58.png?raw=true)
+![alt text](https://user-images.githubusercontent.com/55930906/85910483-1ffc9300-b7ed-11ea-9ef8-870f1c2dd1f3.png?raw=true)
+![alt text](https://user-images.githubusercontent.com/55930906/85910493-2b4fbe80-b7ed-11ea-8ac8-326bd2401e5c.png?raw=true)
 
 
 
