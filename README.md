@@ -1,7 +1,8 @@
 Youtube : https://www.youtube.com/watch?v=1waqSyT6Bn8
 
 # Project 2: Flack
-<a href="https://user-images.githubusercontent.com/55930906/85910483-1ffc9300-b7ed-11ea-9ef8-870f1c2dd1f3.png?raw=true” width =100% height =450 alt= “displayname"></a>
+
+![alt text](https://user-images.githubusercontent.com/55930906/85910483-1ffc9300-b7ed-11ea-9ef8-870f1c2dd1f3.png?raw=true)
 <img src="https://user-images.githubusercontent.com/55930906/85910483-1ffc9300-b7ed-11ea-9ef8-870f1c2dd1f3.png?raw=true"  width =100% height =450 alt= "displayname">
 
 
